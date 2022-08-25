@@ -13,26 +13,35 @@
 </script>
 
 <div class="flex-container">
-  <input
-    bind:value={searchstring}
-    type="text"
-    placeholder="search"
-    id="name_field"
-    class="nes-input"
-  />
-  <button type="button" class=" btn nes-btn is-primary" on:click={search}>Search</button>
+  <form on:submit|preventDefault={search}>
+    <div class="search-input">
+      <input
+        bind:value={searchstring}
+        type="text"
+        placeholder="search"
+        id="name_field"
+        class="nes-input"
+      />
+      <button type="submit" class=" btn nes-btn is-primary">Search</button>
+    </div>
+    <div>
+      {#each searchengines as item, i}
+        <label>
+          <input type="radio" class="nes-radio" bind:group={engine} value={item.key} />
+          <span>{item.title}</span>
+        </label>
+      {/each}
+    </div>
+  </form>
 </div>
 <div>
   <!-- or with adnditional index value -->
-  {#each searchengines as item, i}
-    <label>
-      <input type="radio" class="nes-radio" bind:group={engine} value={item.key} />
-      <span>{item.title}</span>
-    </label>
-  {/each}
 </div>
 
 <style>
+  .search-input {
+    display: flex;
+  }
   .btn {
     box-sizing: border-box;
     display: inline-block;

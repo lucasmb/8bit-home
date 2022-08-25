@@ -33,7 +33,19 @@
   </div>
 </nav>
 
-<main class="flex-container2">
-  <div id="clock" class="flex-item1">{clock}</div>
+<main>
+  <div id="clock">{clock}</div>
   <Search />
 </main>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #clock {
+    display: flex;
+    justify-content: center;
+  }
+</style>
